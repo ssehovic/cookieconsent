@@ -303,6 +303,13 @@ export default class Interface {
 
         this.modalRedrawIcons();
 
+        // Call the callback function if it is defined
+        if (
+          typeof window.CookieConsent.config.callbacks !== 'undefined' &&
+          typeof window.CookieConsent.config.callbacks.onAcceptAll === 'function'
+        ) {
+          window.CookieConsent.config.callbacks.onAcceptAll();
+        }
       });
     }
 
@@ -334,6 +341,13 @@ export default class Interface {
 
         this.modalRedrawIcons();
 
+        // Call the callback function if it is defined
+        if (
+          typeof window.CookieConsent.config.callbacks !== 'undefined' &&
+          typeof window.CookieConsent.config.callbacks.onRejectAll === 'function'
+        ) {
+          window.CookieConsent.config.callbacks.onRejectAll();
+        }
       });
     }
 
@@ -419,6 +433,7 @@ export default class Interface {
     });
 
     document.addEventListener('keydown', (event) => {
+      // If you click close on open modal or press ESC
       if (modalOpen && (!event.keyCode || event.keyCode === 27)) {
         this.elements['modal'].classList.remove('ccm--visible');
         this.elements['modal'].setAttribute('aria-hidden', 'true');
@@ -450,6 +465,13 @@ export default class Interface {
 
       this.writeBufferToDOM();
 
+      // Call the callback function if it is defined
+      if (
+        typeof window.CookieConsent.config.callbacks !== 'undefined' &&
+        typeof window.CookieConsent.config.callbacks.onSaveSettings === 'function'
+      ) {
+        window.CookieConsent.config.callbacks.onSaveSettings();
+      }
     });
   }
 

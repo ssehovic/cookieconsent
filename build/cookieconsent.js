@@ -1546,7 +1546,12 @@ var Interface = /*#__PURE__*/function () {
 
             modalOpen = false;
 
-            _this.modalRedrawIcons();
+            _this.modalRedrawIcons(); // Call the callback function if it is defined
+
+
+            if (typeof window.CookieConsent.config.callbacks !== 'undefined' && typeof window.CookieConsent.config.callbacks.onAcceptAll === 'function') {
+              window.CookieConsent.config.callbacks.onAcceptAll();
+            }
           });
         } // If you click Reject all cookies
 
@@ -1591,7 +1596,12 @@ var Interface = /*#__PURE__*/function () {
 
             modalOpen = false;
 
-            _this.modalRedrawIcons();
+            _this.modalRedrawIcons(); // Call the callback function if it is defined
+
+
+            if (typeof window.CookieConsent.config.callbacks !== 'undefined' && typeof window.CookieConsent.config.callbacks.onRejectAll === 'function') {
+              window.CookieConsent.config.callbacks.onRejectAll();
+            }
           });
         } // If you click Cookie settings and open modal
 
@@ -1680,6 +1690,7 @@ var Interface = /*#__PURE__*/function () {
         modalOpen = false;
       });
       document.addEventListener('keydown', function (event) {
+        // If you click close on open modal or press ESC
         if (modalOpen && (!event.keyCode || event.keyCode === 27)) {
           _this.elements['modal'].classList.remove('ccm--visible');
 
@@ -1716,7 +1727,12 @@ var Interface = /*#__PURE__*/function () {
           });
         });
 
-        _this.writeBufferToDOM();
+        _this.writeBufferToDOM(); // Call the callback function if it is defined
+
+
+        if (typeof window.CookieConsent.config.callbacks !== 'undefined' && typeof window.CookieConsent.config.callbacks.onSaveSettings === 'function') {
+          window.CookieConsent.config.callbacks.onSaveSettings();
+        }
       });
     }
   }, {
@@ -1878,6 +1894,11 @@ var Configuration = /*#__PURE__*/function () {
             unchecked: 'nincs kipipálva'
           }
         }
+      },
+      callbacks: {
+        onAcceptAll: null,
+        onRejectAll: null,
+        onSaveSettings: null
       },
       categories: {},
       services: {}

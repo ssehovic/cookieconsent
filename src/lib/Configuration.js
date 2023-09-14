@@ -79,6 +79,11 @@ export default class Configuration {
           }
         }
       },
+      callbacks: {
+        onAcceptAll: null,
+        onRejectAll: null,
+        onSaveSettings: null,
+      },
       categories: {},
       services: {}
     }
