@@ -16,6 +16,7 @@ export default class Interface {
       '#cconsent-bar { background-color:' + window.CookieConsent.config.theme.barColor + '; color:' + window.CookieConsent.config.theme.barTextColor + '; padding:15px; text-align:right; font-family:sans-serif; font-size:14px; line-height:18px; position:fixed; bottom:0; left:0; width:100%; z-index:9998; transform: translateY(0); transition: transform .6s ease-in-out; transition-delay: .3s;}',
       '#cconsent-bar.ccb--hidden {transform: translateY(100%); display:block;}',
       '#cconsent-bar .ccb__wrapper { display:flex; flex-wrap:wrap; justify-content:space-between; max-width:1800px; margin:0 auto;}',
+      '#cconsent-bar .ccb__button { padding-right: 75px;}',
       '#cconsent-bar .ccb__left { align-self:center; text-align:left; margin: 15px 0;}',
       '#cconsent-bar .ccb__right { align-self:center; white-space: nowrap;}',
       '#cconsent-bar .ccb__right > div {display:inline-block; color:#FFF;}',
